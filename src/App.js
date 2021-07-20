@@ -16,7 +16,7 @@ export default function App() {
         
         <footer className="App-footer">
           <small>
-            Coded by Anna Biro
+            Coded by Anna Biro <a href="https://github.com/AnnaBiro/react-dictionary">Open source code</a>
           </small>
           
         </footer>
