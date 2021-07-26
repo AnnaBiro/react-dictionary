@@ -4,8 +4,9 @@ import Results from "./Results";
 import "./Dictionary.css";
 
 export default function Dictionary() {
-  const [keyword, setKeyword] = useState(null);
+  const [keyword, setKeyword] = useState("baby");
   const [results, setResults] = useState(null);
+  const [loaded, setLoaded] = useState(false);
 
   function handleResponse(response) {
    
@@ -13,13 +14,17 @@ export default function Dictionary() {
     setResults(response.data[0]);
 
   }
-  function search (event) {
-    event.preventDefault();
+  function search() {
     
-
     let apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en_US/${keyword}`;
     
     axios.get(apiUrl).then(handleResponse);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    search();
+    
   }
 
   
@@ -27,14 +32,27 @@ export default function Dictionary() {
   function handleKeywordChange(event) {
     setKeyword(event.target.value);
   }
+  function load() {
+    setLoaded(true);
+    search();
+  }
 
-  return (
+  if (loaded) {
+      return (
     <div className="Dictionary">
-      <form onSubmit={search}>
-        <input type="search" onChange={handleKeywordChange} />
+      <section>
+        <form onSubmit={handleSubmit}>
+        <input type="search" placeholder="Type your word here..." onChange={handleKeywordChange} />
       </form>
+      </section>
       <Results results={results}/>
     </div>
   );
+  } else {
+    load();
+    return "Loading";
+  }
+
+
   
 }

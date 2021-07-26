@@ -10,6 +10,9 @@ export default function App() {
         <header className="App-header">
            Find your word!
         </header>
+        <div className="secondname">
+          Your Online Dictionary
+        </div>
         <main>
          <Dictionary /> 
         </main>
