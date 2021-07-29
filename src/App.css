@@ -1,8 +1,11 @@
-a {
+body {
+  background: #8a1253;
+}
+
+.App a {
   color: #e8751a;
 }
 .App {
-  background: #8a1253;
   color: #fda403;
   padding: 60px 0 100px;
   max-width: 960px;
